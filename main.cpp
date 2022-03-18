@@ -1,11 +1,17 @@
 // librerias
 #include <GL/glut.h>
 
-// Variables
+// Variables //
+
+// Tamanyo pantalla
+GLint ancho = 500;
+GLint alto = 500;
+
+// Otros
 static int year = 0, day = 0;
 static bool rotate = false;
 
-// Funciones
+// Funciones //
 void dayAdd() {
 	day = (day + 10) % 360;
 }
@@ -53,7 +59,7 @@ void display() {
 		
 		/* Situa el planeta */
 		glTranslatef (2.5, 0.0, 0.0);
-		glRotatef (90.0, 1.0, 0.0, 0.0); /* rotacion para poner en vertical */
+		glRotatef (day, 0.0, 1.0, 0.0); /* rotacion para poner en vertical */
 		/* Dibuja el planeta */
 		glColor3f (0.0, 0.0, 1.0);
 		glutWireSphere (0.4, 20, 20);
@@ -114,7 +120,7 @@ void specialKeyboard(int key, int x, int y){
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(alto, ancho);
 	glutInitWindowPosition(20, 20);
 	glutCreateWindow("Practica OpenGL");
 	init();
