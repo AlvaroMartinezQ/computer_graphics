@@ -1,4 +1,4 @@
-# Tema principal: GPPUs
+# Tema principal: GPUs
 
 ### Ideas:
 
