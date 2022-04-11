@@ -31,8 +31,8 @@ void reshape(GLsizei w, GLsizei h) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(90.0, (GLfloat) w/(GLfloat) h, 1.0, 20.0);
-   // glMatrixMode(GL_MODELVIEW);       
-   // glLoadIdentity();   
+    glMatrixMode(GL_MODELVIEW);       
+    glLoadIdentity();
 }
 
 void display() {
@@ -48,12 +48,11 @@ void display() {
 	
 	glPushMatrix(); // Sol color amarillo
         // Sol
-        glRotatef (90.0, 1.0, 0.0, 0.0);
 		glutSolidSphere (1.0, 20, 20);
         
         // Satelite del sol
         glTranslatef (1.3, 0.0, 0.0);
-        glRotatef (year, 1.0, 1.0, 0.0);
+        glRotatef (year, 0.0, 1.0, 0.0);
         glColor3f (0.0, 1.0, 0.0);
         glutWireSphere (0.2, 20, 20);
     glPopMatrix();
@@ -70,7 +69,7 @@ void display() {
         glTranslatef (1.0, 0.0, 0.0);
 		glRotatef (day, 0.0, 1.0, 0.0);
 		glColor3f (1.0, 0.0, 0.0);
-		glutWireSphere (0.15, 10, 5);
+		glutWireSphere (0.2, 10, 5);
 	glPopMatrix();
 	
 	glDisable(GL_COLOR_MATERIAL);
@@ -88,7 +87,7 @@ void initialize() {
 void init()  {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_DEPTH_TEST);
+	glShadeModel(GL_FLAT);
 }
 
 // Acciones de teclas
@@ -109,11 +108,16 @@ void specialKeyboard(int key, int x, int y){
 			dayAdd();
 			break;
 		case GLUT_KEY_F1:
-		     dayAdd();
-		     yearAdd();
+             rotate = true;
+		     if (rotate){
+                while (true) {
+                      dayAdd();
+		              yearAdd();      
+                }
+             }
 		     break;
 		case GLUT_KEY_F2:
- 	         glutReshapeFunc(reshape);
+ 	         rotate = false;
 		     break;
 		default:
 			break;
@@ -127,14 +131,15 @@ void specialKeyboard(int key, int x, int y){
 */
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(alto, ancho);
 	glutInitWindowPosition(20, 20);
 	glutCreateWindow("Practica OpenGL - Sistema planetario");
 	init();
 	glutDisplayFunc(display);
-	glutSpecialFunc(specialKeyboard);
 	glutReshapeFunc(reshape);
-	glutMainLoop();
+	glutSpecialFunc(specialKeyboard);
+	glEnable(GL_DEPTH_TEST);
+    glutMainLoop();
 	return(0);
 }
