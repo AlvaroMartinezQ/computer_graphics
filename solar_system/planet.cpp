@@ -1,3 +1,5 @@
+// Fichero de codigo base
+
 #include <GL/glut.h>
 
 static int year = 0, day = 0;

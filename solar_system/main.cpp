@@ -47,19 +47,27 @@ void display() {
 	glColor3f(0.99, 0.55, 0.01);
 	
 	glPushMatrix(); // Sol color amarillo
-		/* rotacion para poner en vertical */
+        // Sol
         glRotatef (90.0, 1.0, 0.0, 0.0);
 		glutSolidSphere (1.0, 20, 20);
-	glPopMatrix();
+        
+        // Satelite del sol
+        glTranslatef (1.3, 0.0, 0.0);
+        glRotatef (year, 1.0, 1.0, 0.0);
+        glColor3f (0.0, 1.0, 0.0);
+        glutWireSphere (0.2, 20, 20);
+    glPopMatrix();
 		
-	glPushMatrix(); // Primer planeta y satelite color azul y rojo respectivamente
+	glPushMatrix(); // Planeta y satelite color azul y rojo respectivamente
+        // Planeta
         glRotatef (year, 0.0, 1.0, 0.0);
 		glTranslatef (2.5, 0.0, 0.0);
 		glRotatef (day, 0.0, 1.0, 0.0);
 		glColor3f (0.0, 0.0, 1.0);
 		glutWireSphere (0.4, 20, 20);
 		
-		glTranslatef (1.0, 0.0, 0.0);
+		// Satelite del planeta
+        glTranslatef (1.0, 0.0, 0.0);
 		glRotatef (day, 0.0, 1.0, 0.0);
 		glColor3f (1.0, 0.0, 0.0);
 		glutWireSphere (0.15, 10, 5);
@@ -122,7 +130,7 @@ int main(int argc, char** argv) {
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(alto, ancho);
 	glutInitWindowPosition(20, 20);
-	glutCreateWindow("Practica OpenGL");
+	glutCreateWindow("Practica OpenGL - Sistema planetario");
 	init();
 	glutDisplayFunc(display);
 	glutSpecialFunc(specialKeyboard);
