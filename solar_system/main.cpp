@@ -2,12 +2,9 @@
 #include <GL/glut.h>
 
 // Variables //
-
-// Tamanyo pantalla
 GLint ancho = 500;
 GLint alto = 500;
 
-// Otros
 static int year = 0, day = 0;
 static bool rotate = false;
 
@@ -49,20 +46,23 @@ void display() {
 	glEnable(GL_COLOR_MATERIAL);
 	glColor3f(0.99, 0.55, 0.01);
 	
-	glPushMatrix();
-	
-		/* Dibuja el sol */
-		glPushMatrix();
-			glRotatef (90.0, 1.0, 0.0, 0.0); /* rotacion para poner en vertical */
-			glutSolidSphere (1.0, 20, 20);
-		glPopMatrix();
+	glPushMatrix(); // Sol color amarillo
+		/* rotacion para poner en vertical */
+        glRotatef (90.0, 1.0, 0.0, 0.0);
+		glutSolidSphere (1.0, 20, 20);
+	glPopMatrix();
 		
-		/* Situa el planeta */
+	glPushMatrix(); // Primer planeta y satelite color azul y rojo respectivamente
+        glRotatef (year, 0.0, 1.0, 0.0);
 		glTranslatef (2.5, 0.0, 0.0);
-		glRotatef (day, 0.0, 1.0, 0.0); /* rotacion para poner en vertical */
-		/* Dibuja el planeta */
+		glRotatef (day, 0.0, 1.0, 0.0);
 		glColor3f (0.0, 0.0, 1.0);
 		glutWireSphere (0.4, 20, 20);
+		
+		glTranslatef (1.0, 0.0, 0.0);
+		glRotatef (day, 0.0, 1.0, 0.0);
+		glColor3f (1.0, 0.0, 0.0);
+		glutWireSphere (0.15, 10, 5);
 	glPopMatrix();
 	
 	glDisable(GL_COLOR_MATERIAL);
