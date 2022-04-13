@@ -1,8 +1,11 @@
+// THIS FILE IS AN OLD VERSION OF THE PROJECT
+// See planet.cpp
+
 // Librerias
 #include <GL/glut.h>
 
 // Variables
-GLint ancho = 600;
+GLint ancho = 1000;
 GLint alto = 1000;
 
 static int year = 0, day = 0;
@@ -77,7 +80,7 @@ void display()
             glRotatef(year, 0.0, 1.0, 0.0);
         	glTranslatef(3.5, 0.0, 0.0);
         	glRotatef(day, 0.0, 1.0, 0.0);
-        	glColor3f(0.0, 0.0, 1.0);
+            glColor3f(0.0, 0.0, 1.0);
         	glutWireSphere(0.4, 20, 20);
         
         	// Satelite del planeta
