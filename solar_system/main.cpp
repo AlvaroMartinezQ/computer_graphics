@@ -54,9 +54,8 @@ void display()
 	glColor3f(0.99, 0.55, 0.01);
 
 	glPushMatrix(); // Sol color amarillo
-    	// Sol
-    	glPushMatrix();
-    
+    	
+        // Sol
     	glPushMatrix();
     	
             glRotatef(90, 1.0, 0.0, 0.0);
@@ -95,7 +94,7 @@ void display()
 	glDisable(GL_LIGHT0);
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
-	// glutSwapBuffers();
+	glutSwapBuffers();
 	glFlush();
 	
 	if (rotate) {
