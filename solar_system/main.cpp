@@ -69,11 +69,8 @@ void display()
     	
         glPopMatrix();
     
-    	glRotatef(year, 0.0, 1.0, 0.0);
-    
     	glPushMatrix(); // Planeta verde
     	
-            glRotatef(year, 0.0, -1.0, 0.0);
         	glRotatef(year, 0.0, 0.0, 1.0);
         	glTranslatef(0.0, 1.5, 0.0);
         	glColor3f(0.0, 1.0, 0.0);
@@ -91,7 +88,7 @@ void display()
         
         	// Satelite del planeta
         	glTranslatef(1.0, 0.0, 0.0);
-        	glRotatef(-day, 0.0, 1.0, 0.0);
+        	glRotatef(day, 0.0, 1.0, 0.0);
         	glColor3f(1.0, 0.0, 0.0);
         	glutWireSphere(0.2, 10, 5);
     	
