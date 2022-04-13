@@ -39,11 +39,6 @@ void reshape(GLsizei w, GLsizei h)
 	gluPerspective(90.0, (GLfloat)w / (GLfloat)h, 1.0, 20.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	if (rotate)
-	{
-		yearAdd();
-		dayAdd();
-	}
 }
 
 void display()
@@ -74,7 +69,7 @@ void display()
         	glRotatef(year, 0.0, 0.0, 1.0);
         	glTranslatef(0.0, 1.5, 0.0);
         	glColor3f(0.0, 1.0, 0.0);
-        	glutSolidSphere(0.2, 20, 20);
+        	glutSolidSphere(0.35, 20, 20);
     	
         glPopMatrix();
     
@@ -102,6 +97,11 @@ void display()
 	glDisable(GL_DEPTH_TEST);
 	// glutSwapBuffers();
 	glFlush();
+	
+	if (rotate) {
+       yearAdd();
+	   dayAdd();
+    }
 }
 
 void initialize()
@@ -149,6 +149,12 @@ void specialKeyboard(int key, int x, int y)
 	glutPostRedisplay();
 }
 
+// Timer
+void timer (int i) {
+     glutTimerFunc(100, timer, i);
+     glutPostRedisplay();
+}
+
 /* Programa principal.
  * Abre la ventana con el tamanyo inicial, una barra de titulo,
  * modo de pantalla RGBA, y maneja los eventos de entrada.
@@ -165,6 +171,7 @@ int main(int argc, char **argv)
 	glutReshapeFunc(reshape);
 	glutSpecialFunc(specialKeyboard);
 	glEnable(GL_DEPTH_TEST);
+	glutTimerFunc(1000, timer, 1);
 	glutMainLoop();
 	return (0);
 }
