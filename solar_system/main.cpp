@@ -137,11 +137,9 @@ void specialKeyboard(int key, int x, int y)
 		break;
 	case GLUT_KEY_F1:
 		rotate = true;
-		// glutTimerFunc();
 		break;
 	case GLUT_KEY_F2:
 		rotate = false;
-		// glutTimerFunc();
 		break;
 	default:
 		break;
