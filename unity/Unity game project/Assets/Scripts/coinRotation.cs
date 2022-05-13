@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class coinRotation : MonoBehaviour
-{
+public class coinRotation : MonoBehaviour {
     [SerializeField] private Vector3 _rotation;
-
-    // Update is called once per frame
-    void Update()
-    {
+    
+    void Update() {
         transform.Rotate(_rotation * Time.deltaTime * 3);
     }
 }
