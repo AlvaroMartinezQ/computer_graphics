@@ -105,5 +105,4 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Essay files, aka MS word
-.docx
-
+unity/memoria.docx
